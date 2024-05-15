@@ -13,9 +13,43 @@
  * in minutes.
  */
 
-const whatToDoForLunch = function(hungry, availableTime) {
-  console.log("I don't know what to do!");
+//Refactoring syntax
+//condition ? expressionIfTrue : expressionIfFalse;
+
+let hungry = true
+function whatToDoForLunch(hungry, availableTime) {
+  return hungry //condition
+    ? availableTime < 20 //expressionIfTrue of parent if statement and condition nested
+    ? 'Pick up a snack or grab some food at home'//expressionIfTrue
+    : availableTime <= 30 //an expressionIfFalse and condition of next statement 
+    // can take out the availableTime >= 20 b/c of how the conditions are ordered
+    // so if available time is 20+ it would fail the first condition and move onto this one
+    ? 'take a break and cook a tasty meal'//expressionIfTrue
+    :'is an intense program after all and you should probably reconsider'//expressionIfFalse
+    
+  :'wait until you\'r hungry to take a break'//expressionIfFalse of parent if statement
+  }
+
+console.log(whatToDoForLunch(true, 31))
+
+/* 
+unrefactored version
+let hungry = true
+function whatToDoForLunch(hungry, availableTime) {
+  if (hungry) {
+    if (availableTime < 20) {
+      return 'Pick up a snack or grab some food at home'
+    } else if (availableTime >= 20 && availableTime <= 30) {
+      return 'take a break and cook a tasty meal'
+    } else {
+       return 'this is an intense program after all and you should probably reconsider'
+    }
+  } else {
+    return 'wait until you\'r hungry to take a break'
+  }
 }
+
+console.log(whatToDoForLunch(false, 31))*/
 
 
 /*
